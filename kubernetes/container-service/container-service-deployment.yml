@@ -29,7 +29,8 @@ spec:
         - name: docker-socket
           mountPath: /var/run/docker.sock
         ports:
-        - containerPort: 8001
+        - containerPort: 8001       # existing application port
+        - containerPort: 2112       # <--- add this for Prometheus metrics scraping
         env:
         - name: CLONE_BASE_DIR
           value: /app/data
