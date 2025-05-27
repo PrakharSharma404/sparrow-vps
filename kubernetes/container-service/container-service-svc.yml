@@ -8,7 +8,11 @@ spec:
     app: container-service
   ports:
   - protocol: TCP
-    port: 8001
+    port: 8001         # existing app port
     targetPort: 8001
     nodePort: 30081
+  - protocol: TCP
+    port: 2112         # Prometheus metrics port exposed on service
+    targetPort: 2112
+    nodePort: 32112    # <--- assign a free node port in range (30000-32767)
   type: NodePort
